@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class TreinoTabAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
+class TreinoTabAdapter(fragment: TreinosActivity) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int {
         return 3;

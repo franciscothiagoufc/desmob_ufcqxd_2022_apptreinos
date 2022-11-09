@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/fragment_cadastro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_estatistica.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_historico.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/treinos_historico_item.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/treinos_historico_item.xml" value="0.2" />
       </map>
     </option>
   </component>
