@@ -4,11 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HistoricoFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/treinos_historico_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Estatística" />
-
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 </FrameLayout>

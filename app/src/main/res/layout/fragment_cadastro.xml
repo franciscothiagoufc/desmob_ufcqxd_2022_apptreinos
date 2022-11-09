@@ -4,62 +4,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CadastroFragment">
-
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cadastrar Script de Treino"
-                android:textSize="28dp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nome"
-                android:textSize="14dp"/>
             <EditText
+                android:layout_width="312dp"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:hint="Nome do Treino"
+                android:textAlignment="center"></EditText>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nome do Treino"></EditText>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center_horizontal">
-                <LinearLayout
+                android:orientation="horizontal">
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Repetições"/>
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"></EditText>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Repetições"/>
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="number"></EditText>
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="Repetições"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:layout_marginTop="16dp"></EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Séries"
+                    android:layout_marginTop="16dp"/>
+                <EditText
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_marginTop="16dp"></EditText>
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Cadastrar"
+            android:textAlignment="center"/>
     </LinearLayout>
 </FrameLayout>

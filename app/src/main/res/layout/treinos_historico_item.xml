@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:gravity="right">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="left">
+            <TextView
+                android:id="@+id/treinos_historico_item_treino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do treino"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Séries "/>
+                <TextView
+                    android:id="@+id/treinos_historico_item_series"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:text="0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Repetições "/>
+                <TextView
+                    android:id="@+id/treinos_historico_item_repeticoes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/treinos_historico_item_deleta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/treinos_delete_action"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

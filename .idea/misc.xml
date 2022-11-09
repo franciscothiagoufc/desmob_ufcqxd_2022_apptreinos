@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/treinos_historico_exclude.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_treinos.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_cadastro.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_cadastro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_estatistica.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_historico.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_historico.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/treinos_historico_item.xml" value="0.67" />
       </map>
     </option>
   </component>
