@@ -15,17 +15,12 @@ class TreinosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_treinos)
+        /*Iniciando Views*/
         tabLayout = findViewById(R.id.treinos_tab);
         viewpager = findViewById(R.id.treinos_viewpage);
-
+        /*Configurando Tabs e ViewPager*/
         tabAdapter = TreinoTabAdapter(this);
         viewpager.adapter = tabAdapter;
-        viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position);
-                //tabLayout.getTabAt(position)?.select();
-            }
-        })
         tabLayoutMediator=TabLayoutMediator(tabLayout,viewpager){tab, position ->
             tab.text = when(position){
                 0 -> "Cadatros";

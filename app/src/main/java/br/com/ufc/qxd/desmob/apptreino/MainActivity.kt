@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var treinosActivity: TreinosActivity;
+    private lateinit var treinosActivity: InicialActivity;
     private lateinit var treinosActivityIntent: Intent;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        treinosActivity = TreinosActivity();
-        treinosActivityIntent = Intent(this,TreinosActivity::class.java);
+        treinosActivity = InicialActivity();
+        treinosActivityIntent = Intent(this,InicialActivity::class.java);
         startActivity(treinosActivityIntent);
     }
 }
