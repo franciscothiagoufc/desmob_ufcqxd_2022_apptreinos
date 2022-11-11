@@ -9,11 +9,11 @@
         <entry key="app/src/main/res/layout/activity_iniciar_treino.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_treinos.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_cadastro.xml" value="0.1769352290679305" />
+        <entry key="app/src/main/res/layout/fragment_cadastro.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_estatistica.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_historico.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/iniciar_script_item.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/treinos_historico_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/iniciar_script_item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/treinos_historico_item.xml" value="0.3146067415730337" />
       </map>
     </option>
   </component>

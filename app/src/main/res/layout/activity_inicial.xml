@@ -9,15 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <Button
+        android:gravity="right">
+        <ImageButton
             android:id="@+id/inicial_script_editscript"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Configurar Scripts"/>
+            android:src="@drawable/treinos_config_action"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/inicial_script_recycle"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

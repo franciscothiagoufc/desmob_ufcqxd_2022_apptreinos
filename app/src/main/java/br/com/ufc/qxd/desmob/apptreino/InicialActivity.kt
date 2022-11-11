@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,7 +19,7 @@ import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.utils.Utils
 
 class InicialActivity : AppCompatActivity() {
-    private lateinit var edtScripts: Button;
+    private lateinit var edtScripts: ImageButton;
     private lateinit var scriptRecycle: RecyclerView;
     private lateinit var layoutManger: LinearLayoutManager;
     private lateinit var scriptAdapter: InicialScriptsAdapter;
