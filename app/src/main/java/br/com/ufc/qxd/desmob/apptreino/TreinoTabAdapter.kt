@@ -21,7 +21,11 @@ class TreinoTabAdapter(fragment: TreinosActivity,scriptDAO: ScriptDAO,historicoD
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> CadastroFragment();
-            1 -> return HistoricoFragment(historicoDAO);
+            1 -> {
+                var historicoFragment = HistoricoFragment();
+                historicoFragment.historicoDAO = historicoDAO;
+                return historicoFragment;
+            };
             2 -> EstatisticaFragment();
             else -> CadastroFragment();
         }

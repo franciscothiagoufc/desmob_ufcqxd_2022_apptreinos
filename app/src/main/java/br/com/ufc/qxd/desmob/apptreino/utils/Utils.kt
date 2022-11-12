@@ -27,7 +27,6 @@ class Utils {
             val treino2 = Treino("Treino2",2,2);
             val treino3 = Treino("Treino3",3,3);
             val treino4 = Treino("Treino4",4,4);
-            val treinoArray = ArrayList<Treino>();
             historicoDAO.addHistorico(treino1);
             historicoDAO.addHistorico(treino2);
             historicoDAO.addHistorico(treino3);

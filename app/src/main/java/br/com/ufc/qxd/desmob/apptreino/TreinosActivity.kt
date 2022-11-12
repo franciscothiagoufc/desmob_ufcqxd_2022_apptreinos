@@ -26,7 +26,6 @@ class TreinosActivity : AppCompatActivity() {
         /*Obtendo DAO*/
         scriptDAO = this.intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO;
         historicoDAO = this.intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO;
-        Log.w("TreinosActivity","TreinosActivity")
         /*Configurando Tabs e ViewPager*/
         tabAdapter = TreinoTabAdapter(this,scriptDAO,historicoDAO);
         viewpager.adapter = tabAdapter;
@@ -39,5 +38,10 @@ class TreinosActivity : AppCompatActivity() {
             }
         }
         tabLayoutMediator.attach();
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.w("TreinosActivity","TreinosActivity")
     }
 }

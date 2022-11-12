@@ -24,7 +24,7 @@ class InicialActivity : AppCompatActivity() {
     private lateinit var layoutManger: LinearLayoutManager;
     private lateinit var scriptAdapter: InicialScriptsAdapter;
 
-    private lateinit var scriptsDAO: ScriptDAO;
+    private lateinit var scriptDAO: ScriptDAO;
     private lateinit var historicoDAO: HistoricoDAO;
 
     init {
@@ -38,12 +38,10 @@ class InicialActivity : AppCompatActivity() {
         scriptRecycle = findViewById(R.id.inicial_script_recycle);
         edtScripts = findViewById(R.id.inicial_script_editscript);
         /*Iniciando Dados*/
-        scriptsDAO = ScriptDAO();
-        historicoDAO = HistoricoDAO();
-        //Utils.dummyHistorico(historicoDAO);
-        //Utils.dummyScripts(scriptsDAO);
+        scriptDAO = intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO ;
+        historicoDAO = intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO ;
         /*Configurando Recycle View*/
-        scriptAdapter = InicialScriptsAdapter(scriptsDAO.getScriptArray());
+        scriptAdapter = InicialScriptsAdapter(scriptDAO.getScriptArray());
         layoutManger = LinearLayoutManager(this);
         scriptRecycle.layoutManager = layoutManger;
         scriptRecycle.adapter = scriptAdapter;
@@ -52,7 +50,7 @@ class InicialActivity : AppCompatActivity() {
             val treinosActivity = InicialActivity();
             val treinosActivityIntent = Intent(this,TreinosActivity::class.java);
             val treinosActivityIntentBundle = Bundle();
-            treinosActivityIntentBundle.putSerializable("scriptDAO",scriptsDAO);
+            treinosActivityIntentBundle.putSerializable("scriptDAO",scriptDAO);
             treinosActivityIntentBundle.putSerializable("historicoDAO",historicoDAO);
             treinosActivityIntent.putExtra("Args",treinosActivityIntentBundle);
             startActivity(treinosActivityIntent);

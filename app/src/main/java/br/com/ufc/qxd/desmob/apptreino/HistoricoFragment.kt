@@ -22,15 +22,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HistoricoFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HistoricoFragment(historicoDAO: HistoricoDAO) : Fragment() {
+class HistoricoFragment() : Fragment() {
     private lateinit var historicoRecycle:RecyclerView;
     private lateinit var historicoRecycleAdapter: TreinosHistoricoAdapter;
     private lateinit var linearManger: LinearLayoutManager;
-    private lateinit var historicoDAO: HistoricoDAO;
+    public lateinit var historicoDAO: HistoricoDAO;
     private lateinit var Treinos: ArrayList<Historico>;
-    init {
-        this.historicoDAO=historicoDAO;
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -40,7 +37,8 @@ class HistoricoFragment(historicoDAO: HistoricoDAO) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val View = inflater.inflate(R.layout.fragment_historico, container, false)
-        /*Carregando Dados*/
+        /*Recuperando dados*/
+        historicoDAO = HistoricoDAO();
         /*Iniciando Views*/
         linearManger = LinearLayoutManager(this.context);
         historicoRecycleAdapter = TreinosHistoricoAdapter(historicoDAO);
@@ -50,5 +48,10 @@ class HistoricoFragment(historicoDAO: HistoricoDAO) : Fragment() {
         historicoRecycle.layoutManager = linearManger;
         historicoRecycleAdapter.notifyDataSetChanged();
         return View;
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.w("TreinosActivity","TreinosActivity")
     }
 }
