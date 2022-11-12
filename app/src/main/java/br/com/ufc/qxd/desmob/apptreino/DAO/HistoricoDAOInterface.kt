@@ -8,5 +8,5 @@ interface HistoricoDAOInterface : Serializable {
     public fun init();
     public fun addHistorico(treino: Treino);
     public fun getHistoricoArray(): ArrayList<Historico>;
-    public fun deleteHistorico(Id:Int);
+    public fun deleteHistorico(Id:Int):Boolean;
 }

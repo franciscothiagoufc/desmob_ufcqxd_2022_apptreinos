@@ -23,13 +23,14 @@ class HistoricoDAO : HistoricoDAOInterface {
         return historicoArray;
     }
 
-    override fun deleteHistorico(Id: Int) {
+    override fun deleteHistorico(Id: Int):Boolean {
         for (i in historicoArray)
         {
             if (i.Id == Id){
                 historicoArray.remove(i);
-                break;
+                return true;
             }
         }
+        return false;
     }
 }

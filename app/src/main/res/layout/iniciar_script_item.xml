@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iniciar_script_item_layout"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:gravity="center"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto">
+    android:layout_height="105dp">
     <androidx.cardview.widget.CardView
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        cardview:cardCornerRadius="8dp"
-        android:outlineAmbientShadowColor="@color/material_dynamic_neutral90">
-            <RelativeLayout
-                android:layout_width="match_parent"
+        xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        cardview:cardElevation="10dp"
+        cardview:cardCornerRadius="12dp"
+        cardview:layout_constraintBottom_toBottomOf="parent"
+        cardview:layout_constraintTop_toTopOf="parent"
+        cardview:layout_constraintRight_toRightOf="parent"
+        cardview:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/iniciar_script_item_nome"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:ignore="MissingConstraints">
-                <TextView
-                    android:id="@+id/iniciar_script_item_nome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Nome do Script" />
-
-                <ImageButton
-                    android:id="@+id/iniciar_script_item_remover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/treinos_remove_action" />
-
-                <ImageButton
-                    android:id="@+id/iniciar_script_item_iniciar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/treinos_start_action" />
-            </RelativeLayout>
+                android:text="Nome do Script"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+            <ImageButton
+                android:id="@+id/iniciar_script_item_remover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/treinos_remove_action"
+                android:layout_marginLeft="12dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"/>
+            <ImageButton
+                android:id="@+id/iniciar_script_item_iniciar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/treinos_start_action"
+                android:layout_marginRight="12dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

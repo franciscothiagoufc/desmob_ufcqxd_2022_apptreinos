@@ -27,6 +27,10 @@ class InicialActivity : AppCompatActivity() {
     private lateinit var scriptsDAO: ScriptDAO;
     private lateinit var historicoDAO: HistoricoDAO;
 
+    init {
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
@@ -36,8 +40,8 @@ class InicialActivity : AppCompatActivity() {
         /*Iniciando Dados*/
         scriptsDAO = ScriptDAO();
         historicoDAO = HistoricoDAO();
-        Utils.dummyHistorico(historicoDAO);
-        Utils.dummyScripts(scriptsDAO);
+        //Utils.dummyHistorico(historicoDAO);
+        //Utils.dummyScripts(scriptsDAO);
         /*Configurando Recycle View*/
         scriptAdapter = InicialScriptsAdapter(scriptsDAO.getScriptArray());
         layoutManger = LinearLayoutManager(this);
@@ -48,7 +52,8 @@ class InicialActivity : AppCompatActivity() {
             val treinosActivity = InicialActivity();
             val treinosActivityIntent = Intent(this,TreinosActivity::class.java);
             val treinosActivityIntentBundle = Bundle();
-            treinosActivityIntentBundle.putSerializable("ScriptDAO",scriptsDAO);
+            treinosActivityIntentBundle.putSerializable("scriptDAO",scriptsDAO);
+            treinosActivityIntentBundle.putSerializable("historicoDAO",historicoDAO);
             treinosActivityIntent.putExtra("Args",treinosActivityIntentBundle);
             startActivity(treinosActivityIntent);
         }
