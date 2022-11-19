@@ -65,13 +65,14 @@
                     android:layout_marginTop="12dp"
                     android:layout_below="@+id/treinos_cadastro_exercicio"
                     android:layout_toLeftOf="@+id/treinos_cadastro_add_exercicio"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:layout_below="@+id/treinos_cadastro_serie">
 
-                    </androidx.recyclerview.widget.RecyclerView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/treinos_cadastro_serie"
+                    android:layout_marginTop="12dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

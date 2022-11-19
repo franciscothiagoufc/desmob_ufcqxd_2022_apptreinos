@@ -1,19 +1,23 @@
 package br.com.ufc.qxd.desmob.apptreino
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-class InicialScriptsAdapter(Scripts:ArrayList<Script>):RecyclerView.Adapter<InicialScriptsAdapter.ScriptViewHolder>() {
+class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity):RecyclerView.Adapter<InicialScriptsAdapter.ScriptViewHolder>() {
     private lateinit var Scripts: ArrayList<Script>;
+    private lateinit var Activity: InicialActivity;
     init {
         this.Scripts=Scripts;
+        this.Activity = Activity;
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,6 +32,11 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>):RecyclerView.Adapter<Inic
         holder.deleteButton.setOnClickListener {
             Scripts.removeAt(holder.adapterPosition);
             notifyDataSetChanged();
+        }
+        holder.startButton.setOnClickListener {
+            val iniciarTreinoIntent = Intent(Activity,IniciarTreinoActivity::class.java);
+            Activity.startActivity(iniciarTreinoIntent);
+
         }
     }
     override fun getItemCount(): Int {

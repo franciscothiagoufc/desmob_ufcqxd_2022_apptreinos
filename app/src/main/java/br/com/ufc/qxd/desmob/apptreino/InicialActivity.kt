@@ -41,7 +41,7 @@ class InicialActivity : AppCompatActivity() {
         scriptDAO = intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO ;
         historicoDAO = intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO ;
         /*Configurando Recycle View*/
-        scriptAdapter = InicialScriptsAdapter(scriptDAO.getScriptArray());
+        scriptAdapter = InicialScriptsAdapter(scriptDAO.getScriptArray(),this);
         layoutManger = LinearLayoutManager(this);
         scriptRecycle.layoutManager = layoutManger;
         scriptRecycle.adapter = scriptAdapter;
