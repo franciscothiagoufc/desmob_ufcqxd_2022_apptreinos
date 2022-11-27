@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:gravity="center"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        cardview:layout_constraintBottom_toBottomOf="parent"
+        cardview:layout_constraintTop_toTopOf="parent"
+        cardview:layout_constraintRight_toRightOf="parent"
+        cardview:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp">
+        <RelativeLayout
+            android:id="@+id/treinos_historico_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/treinos_historico_item_treino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do treino"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="4dp"/>
+            <TextView
+                android:id="@+id/treinos_historico_item_series_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:text="Séries "
+                android:layout_marginLeft="4dp"/>
+            <TextView
+                android:id="@+id/treinos_historico_item_series"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/treinos_historico_item_series_label"
+                android:layout_alignParentBottom="true"
+                android:text="0" />
+            <TextView
+                android:id="@+id/treinos_historico_item_repeticoes_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/treinos_historico_item_series"
+                android:layout_alignParentBottom="true"
+                android:text=" Repetições " />
+            <TextView
+                android:id="@+id/treinos_historico_item_repeticoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/treinos_historico_item_repeticoes_label"
+                android:text="0" />
+            <ImageButton
+                android:id="@+id/treinos_historico_item_deleta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/treinos_delete_action"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
