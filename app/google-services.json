@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "46379929682",
+    "project_id": "apptreinei-ufc2022",
+    "storage_bucket": "apptreinei-ufc2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46379929682:android:63db1e9dd5c3be93a70f8b",
+        "android_client_info": {
+          "package_name": "br.com.ufc.qxd.desmob.apptreino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46379929682-8ckdtjsg75qmf3segvgoifkcm6aq4l4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAadYVDUcdzVEksWmLZE9WoSZV60VhOD1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46379929682-8ckdtjsg75qmf3segvgoifkcm6aq4l4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
