@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
         Utils.dummyScripts(scriptDAO);
         Utils.dummyHistorico(historicoDAO);
         /*--------------------------*/
-        Args = Bundle();
+        treinosActivityIntent = Intent(this,InicialActivity::class.java);
+        /*Args = Bundle();
         Args.putSerializable("historicoDAO",historicoDAO);
         Args.putSerializable("scriptDAO",scriptDAO);
-        treinosActivityIntent = Intent(this,InicialActivity::class.java);
-        treinosActivityIntent.putExtra("Args",Args);
+        treinosActivityIntent.putExtra("Args",Args);*/
         treinosActivity = InicialActivity();
         startActivity(treinosActivityIntent);
     }

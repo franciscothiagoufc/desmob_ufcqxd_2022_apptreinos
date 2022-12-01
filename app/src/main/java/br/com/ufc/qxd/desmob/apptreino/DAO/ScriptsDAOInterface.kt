@@ -6,7 +6,8 @@ import java.io.Serializable
 
 interface ScriptsDAOInterface : Serializable {
     public fun init();
-    public fun addScript(nome: String,treinos:ArrayList<Treino>);
+    public fun addScript(nome: String,treinos:ArrayList<Treino>):Boolean;
+    public fun getScript(id:Int):Script?;
     public fun getScriptArray():ArrayList<Script>;
-    public fun deleteScript(Id:Int);
+    public fun deleteScript(Id:Int):Boolean;
 }

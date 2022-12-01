@@ -21,16 +21,17 @@
             android:id="@+id/treinos_historico_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:id="@+id/treinos_historico_item_treino"
+                android:id="@+id/treinos_cadastro_item_treino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome do treino"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="4dp"/>
+                android:layout_marginLeft="4dp"
+                android:text="Nome do treino" />
             <TextView
-                android:id="@+id/treinos_historico_item_series_label"
+                android:id="@+id/treinos_cadastro_item_series_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -38,28 +39,15 @@
                 android:text="Séries "
                 android:layout_marginLeft="4dp"/>
             <TextView
-                android:id="@+id/treinos_historico_item_series"
+                android:id="@+id/treinos_cadastro_item_series"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/treinos_historico_item_series_label"
+                android:layout_toRightOf="@+id/treinos_cadastro_item_series_label"
                 android:layout_alignParentBottom="true"
                 android:text="0" />
-            <TextView
-                android:id="@+id/treinos_historico_item_repeticoes_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/treinos_historico_item_series"
-                android:layout_alignParentBottom="true"
-                android:text=" Repetições " />
-            <TextView
-                android:id="@+id/treinos_historico_item_repeticoes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/treinos_historico_item_repeticoes_label"
-                android:text="0" />
+
             <ImageButton
-                android:id="@+id/treinos_historico_item_deleta"
+                android:id="@+id/treinos_cadastro_item_deleta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/treinos_delete_action"

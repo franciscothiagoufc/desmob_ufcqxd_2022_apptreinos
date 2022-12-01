@@ -14,18 +14,28 @@ class ScriptDAO : ScriptsDAOInterface {
         TODO("Not yet implemented")
     }
 
-    override fun addScript(nome: String,treinos:ArrayList<Treino>) {
+    override fun addScript(nome: String,treinos:ArrayList<Treino>):Boolean {
         counter++;
         val script = Script(nome, counter);
         script.exercicios = ArrayList(treinos);
         scriptArray.add(script);
+        return true;
+    }
+
+    override fun getScript(id: Int):Script? {
+        for (i in scriptArray){
+            if (i.Id == id) {
+                return i;
+            }
+        }
+        return null;
     }
 
     override fun getScriptArray():ArrayList<Script> {
         return scriptArray;
     }
 
-    override fun deleteScript(Id: Int) {
+    override fun deleteScript(Id: Int):Boolean {
         for (i in scriptArray)
         {
             if (i.Id == Id){
@@ -33,5 +43,6 @@ class ScriptDAO : ScriptsDAOInterface {
                 break;
             }
         }
+        return true;
     }
 }

@@ -23,14 +23,14 @@ class InicialActivity : AppCompatActivity() {
     private lateinit var scriptRecycle: RecyclerView;
     private lateinit var layoutManger: LinearLayoutManager;
     private lateinit var scriptAdapter: InicialScriptsAdapter;
-
     private lateinit var scriptDAO: ScriptDAO;
     private lateinit var historicoDAO: HistoricoDAO;
-
+    private val editActivityResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult -> scriptAdapter.notifyDataSetChanged();
+    }
     init {
 
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
@@ -38,8 +38,10 @@ class InicialActivity : AppCompatActivity() {
         scriptRecycle = findViewById(R.id.inicial_script_recycle);
         edtScripts = findViewById(R.id.inicial_script_editscript);
         /*Iniciando Dados*/
-        scriptDAO = intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO ;
-        historicoDAO = intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO ;
+        /*scriptDAO = intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO ;
+        historicoDAO = intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO ;*/
+        scriptDAO = ScriptDAO();
+        historicoDAO = HistoricoDAO();
         /*Configurando Recycle View*/
         scriptAdapter = InicialScriptsAdapter(scriptDAO.getScriptArray(),this);
         layoutManger = LinearLayoutManager(this);
@@ -49,11 +51,11 @@ class InicialActivity : AppCompatActivity() {
         edtScripts.setOnClickListener{
             val treinosActivity = InicialActivity();
             val treinosActivityIntent = Intent(this,TreinosActivity::class.java);
-            val treinosActivityIntentBundle = Bundle();
+            /*val treinosActivityIntentBundle = Bundle();
             treinosActivityIntentBundle.putSerializable("scriptDAO",scriptDAO);
             treinosActivityIntentBundle.putSerializable("historicoDAO",historicoDAO);
-            treinosActivityIntent.putExtra("Args",treinosActivityIntentBundle);
-            startActivity(treinosActivityIntent);
+            treinosActivityIntent.putExtra("Args",treinosActivityIntentBundle);*/
+            editActivityResult.launch(treinosActivityIntent);
         }
         scriptAdapter.notifyDataSetChanged();
     }

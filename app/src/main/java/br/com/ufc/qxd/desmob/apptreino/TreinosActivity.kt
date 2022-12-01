@@ -24,8 +24,10 @@ class TreinosActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.treinos_tab);
         viewpager = findViewById(R.id.treinos_viewpage);
         /*Obtendo DAO*/
-        scriptDAO = this.intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO;
-        historicoDAO = this.intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO;
+        /*scriptDAO = this.intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO;
+        historicoDAO = this.intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO;*/
+        scriptDAO = ScriptDAO();
+        historicoDAO = HistoricoDAO();
         /*Configurando Tabs e ViewPager*/
         tabAdapter = TreinoTabAdapter(this,scriptDAO,historicoDAO);
         viewpager.adapter = tabAdapter;

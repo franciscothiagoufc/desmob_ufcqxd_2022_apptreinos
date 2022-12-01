@@ -5,28 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IniciarTreinoActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <RelativeLayout
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/treinos_delete_action" />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/treinos_confirm_action"
-                android:layout_alignParentLeft="true"/>
-        </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="340dp"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:id="@+id/iniciar_treino_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/iniciar_treino_btn_finalizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finalizar"
+            android:textSize="24dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

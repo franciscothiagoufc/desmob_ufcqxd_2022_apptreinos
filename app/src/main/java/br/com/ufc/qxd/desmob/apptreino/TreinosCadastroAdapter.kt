@@ -12,47 +12,43 @@ import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-public class TreinosCadastroAdapter(historicoDAO: HistoricoDAO): RecyclerView.Adapter<TreinosCadastroAdapter.TreinoViewHolder>() {
-    private var historicoDAO:HistoricoDAO;
+public class TreinosCadastroAdapter(exercicios: ArrayList<Treino>): RecyclerView.Adapter<TreinosCadastroAdapter.TreinoViewHolder>() {
+    private var exercicios:ArrayList<Treino>;
     init {
-        this.historicoDAO=historicoDAO;
+        this.exercicios=exercicios;
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): TreinosCadastroAdapter.TreinoViewHolder {
-        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.treinos_historico_item,parent,false);
+        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.treinos_cadastro_item,parent,false);
         return TreinoViewHolder(itemView);
     }
 
     override fun onBindViewHolder(holder: TreinosCadastroAdapter.TreinoViewHolder, position: Int) {
-        val historico = historicoDAO.getHistoricoArray().get(holder.adapterPosition);
-        holder.putInfos(historico.treino);
+        val exercicio = exercicios.get(holder.adapterPosition);
+        holder.putInfos(exercicio);
         holder.deleteButton.setOnClickListener {
-            if(historicoDAO.deleteHistorico(historico.Id)){
-                notifyDataSetChanged();
-            }
+            exercicios.removeAt(holder.adapterPosition);
+            notifyDataSetChanged();
         }
     }
 
     override fun getItemCount(): Int {
-        return this.historicoDAO.getHistoricoArray().size;
+        return exercicios.size;
     }
     class TreinoViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         public lateinit var deleteButton: ImageButton;
         public lateinit var treinoNome: TextView;
-        public lateinit var repeticoesView: TextView;
         public lateinit var seriesView: TextView;
         init {
-            deleteButton = itemView.findViewById(R.id.treinos_historico_item_deleta);
-            treinoNome = itemView.findViewById(R.id.treinos_historico_item_treino);
-            repeticoesView = itemView.findViewById(R.id.treinos_historico_item_repeticoes);
-            seriesView = itemView.findViewById(R.id.treinos_historico_item_series);
+            deleteButton = itemView.findViewById(R.id.treinos_cadastro_item_deleta);
+            treinoNome = itemView.findViewById(R.id.treinos_cadastro_item_treino);
+            seriesView = itemView.findViewById(R.id.treinos_cadastro_item_series);
         }
-        public fun putInfos(treino: Treino){
-            treinoNome.text = treino.nome;
-            repeticoesView.text = treino.reps.toString();
-            seriesView.text = treino.series.toString();
+        public fun putInfos(exercicio: Treino){
+            treinoNome.text = exercicio.nome;
+            seriesView.text = exercicio.series.toString();
         }
     }
 }

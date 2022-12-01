@@ -7,17 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
+import br.com.ufc.qxd.desmob.apptreino.utils.Codes
 
 class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity):RecyclerView.Adapter<InicialScriptsAdapter.ScriptViewHolder>() {
     private lateinit var Scripts: ArrayList<Script>;
     private lateinit var Activity: InicialActivity;
+    private lateinit var startForResult: ActivityResultLauncher<Intent>;
     init {
         this.Scripts=Scripts;
         this.Activity = Activity;
+        startForResult = Activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        }
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,9 +43,9 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
             notifyDataSetChanged();
         }
         holder.startButton.setOnClickListener {
-            val iniciarTreinoIntent = Intent(Activity,IniciarTreinoActivity::class.java);
-            Activity.startActivity(iniciarTreinoIntent);
-
+            var intent = Intent(Activity,IniciarTreinoActivity::class.java);
+            intent.putExtra("scriptID",Scripts.get(holder.adapterPosition).Id)
+            startForResult.launch(intent);
         }
     }
     override fun getItemCount(): Int {
