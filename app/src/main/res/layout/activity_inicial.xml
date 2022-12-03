@@ -5,19 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InicialActivity">
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inicial_script_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="right">
-        <ImageButton
-            android:id="@+id/inicial_script_editscript"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/treinos_config_action"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/inicial_script_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+        android:layout_height="match_parent"/>
+    <ImageButton
+        android:id="@+id/inicial_script_editscript"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/treinos_config_action"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/inicial_script_btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,8 @@ class Authentication(activity: AppCompatActivity) {
     private lateinit var providers : ArrayList<AuthUI.IdpConfig>
     private lateinit var signInIntent : Intent;
     private lateinit var auth: FirebaseAuth;
+    public  var loginCallBack: () -> Unit = {};
+    public  var logoutCallBack: () -> Unit = {};
     init {
         this.activity = activity
         /*Configurando providers*/
@@ -24,7 +26,7 @@ class Authentication(activity: AppCompatActivity) {
         providers.add(AuthUI.IdpConfig.EmailBuilder().build())
         /*Configurando Tela de autenticação*/
         signInLauncher = this.activity.registerForActivityResult(FirebaseAuthUIActivityResultContract()){
-            res -> this.onSignInResult(res);
+                res -> this.onSignInResult(res,{});
         }
         /*Configruando Launcher*/
         signInIntent = AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).build();
@@ -35,14 +37,21 @@ class Authentication(activity: AppCompatActivity) {
     public fun login(){
         if (!checkAuthentication()){
             signInLauncher.launch(signInIntent);
-            Log.w("Authentication","Authentication")
+        }
+        else{
+            loginCallBack()
         }
     }
-    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult){
+    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult,u: () -> Unit){
         if (result.resultCode == RESULT_OK) {
-            val user = FirebaseAuth.getInstance().currentUser
+            loginCallBack()
         } else {
 
+        }
+    }
+    public fun logout(){
+        AuthUI.getInstance().signOut(activity).addOnCompleteListener{
+            logoutCallBack()
         }
     }
 }
