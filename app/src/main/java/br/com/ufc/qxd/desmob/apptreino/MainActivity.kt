@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.utils.Utils
 
@@ -33,13 +33,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(treinosActivityIntent);
         }
         /*Adicionando dados fictícios*/
-        Utils.dummyScripts(scriptDAO);
-        Utils.dummyHistorico(historicoDAO);
+        //Utils.dummyScripts(scriptDAO,authentication);
+        //Utils.dummyHistorico(historicoDAO);
         /*Iniciando activitys*/
         treinosActivityIntent = Intent(this,InicialActivity::class.java);
         treinosActivity = InicialActivity();
         if(authentication.checkAuthentication()){
-            startActivity(treinosActivityIntent);
+            //startActivity(treinosActivityIntent);
         }
         /*Adicionando Interações*/
         loginEmailPass.setOnClickListener(){

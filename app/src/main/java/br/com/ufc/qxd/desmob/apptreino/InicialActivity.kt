@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 
@@ -25,7 +25,7 @@ class InicialActivity : AppCompatActivity() {
     private lateinit var historicoDAO: HistoricoDAO;
     private lateinit var authentication: Authentication;
     private val editActivityResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            result: ActivityResult -> scriptAdapter.notifyDataSetChanged();
+            result: ActivityResult -> update();
     }
     init {
 
@@ -59,8 +59,12 @@ class InicialActivity : AppCompatActivity() {
         scriptDAO = ScriptDAO();
         historicoDAO = HistoricoDAO();
         /*Carregando dados*/
-        scriptDAO.getScriptArray("",{
-            result -> scriptAdapter.Scripts = result;scriptAdapter.notifyDataSetChanged();
+        update();
+    }
+    private fun update(){
+        /*Carregando dados*/
+        scriptDAO.getScriptArray(authentication.getId(),{
+                result -> scriptAdapter.Scripts = result;scriptAdapter.notifyDataSetChanged();
         }){
                 code -> Toast.makeText(applicationContext, "Falha ao carregar Script", Toast.LENGTH_SHORT)
         }

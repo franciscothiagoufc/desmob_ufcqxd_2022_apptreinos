@@ -13,7 +13,8 @@ import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 import br.com.ufc.qxd.desmob.apptreino.utils.Codes
@@ -21,6 +22,7 @@ import br.com.ufc.qxd.desmob.apptreino.utils.Codes
 class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity):RecyclerView.Adapter<InicialScriptsAdapter.ScriptViewHolder>() {
     public lateinit var Scripts: ArrayList<Script>;
     private lateinit var Activity: InicialActivity;
+    private lateinit var authentication:Authentication;
     private lateinit var scriptDAO: ScriptDAO;
     private lateinit var startForResult: ActivityResultLauncher<Intent>;
     init {
@@ -41,7 +43,7 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
         holder.putInfos(script);
         scriptDAO=ScriptDAO();
         holder.deleteButton.setOnClickListener {
-            scriptDAO.deleteScript(script.Id,{
+            scriptDAO.deleteScript( authentication.getId(),script.Id,{
                 Scripts.removeAt(holder.adapterPosition);
                 notifyDataSetChanged();
             }){

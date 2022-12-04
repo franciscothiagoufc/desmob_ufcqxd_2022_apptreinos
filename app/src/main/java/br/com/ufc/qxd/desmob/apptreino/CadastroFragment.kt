@@ -12,11 +12,12 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-class CadastroFragment : Fragment() {
+class CadastroFragment(userId:String) : Fragment() {
     private lateinit var addExercicio: ImageButton;
     private lateinit var addTreino: ImageButton;
     private lateinit var nomeScript: EditText;
@@ -27,6 +28,10 @@ class CadastroFragment : Fragment() {
     private lateinit var exerciciosLinearLayout: LinearLayoutManager;
     private lateinit var exercicios: ArrayList<Treino>;
     private lateinit var scriptDAO: ScriptDAO;
+    private lateinit var userId: String;
+    init {
+        this.userId = userId;
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,11 +70,11 @@ class CadastroFragment : Fragment() {
         addTreino.setOnClickListener {
             try {
                 val nome = nomeScript.text.toString();
-                scriptDAO.addScript(nome,exercicios,{
-                    nomeScript.text.clear();
-                    nomeExercicio.text.clear();
-                    series.text.clear();
-                    exercicios.clear();
+                scriptDAO.addScript(userId,nome,exercicios,{
+                    this.nomeScript.text.clear();
+                    this.nomeExercicio.text.clear();
+                    this.series.text.clear();
+                    this.exercicios.clear();
                     exerciciosAdapter.notifyDataSetChanged();
                 }){
                         code -> Toast.makeText(context, "Falha ao carregar Script", Toast.LENGTH_SHORT)

@@ -7,8 +7,8 @@ import java.io.Serializable
 
 interface ScriptsDAOInterface{
     public fun init();
-    public fun addScript(nome: String,treinos:ArrayList<Treino>,sucess: () -> Unit = {},error:(code: codesDAO) -> Unit = {});
-    public fun getScriptArray(Id:String,sucess: (result:ArrayList<Script>) -> Unit = {},error:(code:codesDAO) -> Unit = {});
-    public fun getScript(Id:String,sucess: (result:Script) -> Unit = {},error:(code:codesDAO) -> Unit = {});
-    public fun deleteScript(Id:String,sucess: () -> Unit = {},error:(code: codesDAO) -> Unit = {});
+    public fun addScript(userId:String,nome: String,treinos:ArrayList<Treino>,sucess: () -> Unit = {},error:(code: codesDAO) -> Unit = {});
+    public fun getScriptArray(userId:String,sucess: (result:ArrayList<Script>) -> Unit = {},error:(code:codesDAO) -> Unit = {});
+    public fun getScript(userId:String,Id:String,sucess: (result:ArrayList<Treino>) -> Unit = {},error:(code:codesDAO) -> Unit = {});
+    public fun deleteScript(userId:String,Id:String,sucess: () -> Unit = {},error:(code: codesDAO) -> Unit = {});
 }

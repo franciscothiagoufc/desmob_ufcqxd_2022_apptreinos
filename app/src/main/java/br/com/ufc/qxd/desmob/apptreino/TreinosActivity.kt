@@ -6,7 +6,8 @@ import android.util.Log
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
+import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -15,21 +16,17 @@ class TreinosActivity : AppCompatActivity() {
     private lateinit var viewpager:ViewPager2;
     private lateinit var tabAdapter:TreinoTabAdapter;
     private lateinit var tabLayoutMediator: TabLayoutMediator;
-    private lateinit var scriptDAO: ScriptDAO;
-    private lateinit var historicoDAO: HistoricoDAO;
+    private lateinit var authentication: Authentication;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_treinos)
+        /*Autenticação para obter o Id do usuári*/
+        authentication = Authentication(this);
         /*Iniciando Views*/
         tabLayout = findViewById(R.id.treinos_tab);
         viewpager = findViewById(R.id.treinos_viewpage);
-        /*Obtendo DAO*/
-        /*scriptDAO = this.intent.getBundleExtra("Args")?.getSerializable("scriptDAO") as ScriptDAO;
-        historicoDAO = this.intent.getBundleExtra("Args")?.getSerializable("historicoDAO") as HistoricoDAO;*/
-        scriptDAO = ScriptDAO();
-        historicoDAO = HistoricoDAO();
         /*Configurando Tabs e ViewPager*/
-        tabAdapter = TreinoTabAdapter(this,scriptDAO,historicoDAO);
+        tabAdapter = TreinoTabAdapter(this,authentication.getId());
         viewpager.adapter = tabAdapter;
         tabLayoutMediator=TabLayoutMediator(tabLayout,viewpager){tab, position ->
             tab.text = when(position){

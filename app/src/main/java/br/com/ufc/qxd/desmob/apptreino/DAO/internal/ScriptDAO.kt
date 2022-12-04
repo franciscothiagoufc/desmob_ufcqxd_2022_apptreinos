@@ -6,7 +6,7 @@ import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-class ScriptDAO : ScriptsDAOInterface {
+/*class ScriptDAO : ScriptsDAOInterface {
     companion object{
         private var counter:Int=0;
         private var scriptArray = ArrayList<Script>();
@@ -48,3 +48,5 @@ class ScriptDAO : ScriptsDAOInterface {
         error(codesDAO.NOT_FOUND);
     }
 }
+
+ */

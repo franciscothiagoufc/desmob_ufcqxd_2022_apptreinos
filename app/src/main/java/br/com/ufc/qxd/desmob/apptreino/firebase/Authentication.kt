@@ -54,4 +54,10 @@ class Authentication(activity: AppCompatActivity) {
             logoutCallBack()
         }
     }
+    public fun getId():String{
+        if(checkAuthentication()){
+            return FirebaseAuth.getInstance().currentUser?.uid ?: "";
+        }
+        return ""
+    }
 }
