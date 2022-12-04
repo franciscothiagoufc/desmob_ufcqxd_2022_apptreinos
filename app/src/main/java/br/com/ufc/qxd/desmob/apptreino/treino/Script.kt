@@ -1,7 +1,7 @@
 package br.com.ufc.qxd.desmob.apptreino.treino
 
-class Script(nome:String,Id:Int=0) {
-    var Id:Int=0;
+class Script(nome:String,Id:String="") {
+    var Id:String="";
     var exercicios:ArrayList<Treino>
     var nome:String
     init {

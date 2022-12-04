@@ -1,6 +1,7 @@
 package br.com.ufc.qxd.desmob.apptreino.DAO.internal
 
 import br.com.ufc.qxd.desmob.apptreino.DAO.ScriptsDAOInterface
+import br.com.ufc.qxd.desmob.apptreino.DAO.codesDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
@@ -14,35 +15,36 @@ class ScriptDAO : ScriptsDAOInterface {
         TODO("Not yet implemented")
     }
 
-    override fun addScript(nome: String,treinos:ArrayList<Treino>):Boolean {
+    override public fun addScript(nome: String,treinos:ArrayList<Treino>,sucess: () -> Unit ,error:(code: codesDAO) -> Unit) {
         counter++;
-        val script = Script(nome, counter);
+        val script = Script(nome, counter.toString());
         script.exercicios = ArrayList(treinos);
         scriptArray.add(script);
-        return true;
+        sucess();
     }
 
-    override fun getScript(id: Int):Script? {
-        for (i in scriptArray){
-            if (i.Id == id) {
-                return i;
+    override fun getScriptArray(Id:String,sucess:(result:ArrayList<Script>) -> Unit,error:(code:codesDAO) -> Unit) {
+        sucess(ArrayList<Script>(scriptArray))
+    }
+    override public fun getScript(Id:String,sucess: (result:Script) -> Unit,error:(code:codesDAO) -> Unit){
+        for(i in scriptArray){
+            if(i.Id == Id){
+                sucess(i)
+                break
             }
         }
-        return null;
+        error(codesDAO.NOT_FOUND)
     }
 
-    override fun getScriptArray():ArrayList<Script> {
-        return scriptArray;
-    }
-
-    override fun deleteScript(Id: Int):Boolean {
+    override fun deleteScript(Id:String,sucess: () -> Unit ,error:(code:codesDAO) -> Unit) {
         for (i in scriptArray)
         {
             if (i.Id == Id){
                 scriptArray.remove(i);
+                sucess();
                 break;
             }
         }
-        return true;
+        error(codesDAO.NOT_FOUND);
     }
 }

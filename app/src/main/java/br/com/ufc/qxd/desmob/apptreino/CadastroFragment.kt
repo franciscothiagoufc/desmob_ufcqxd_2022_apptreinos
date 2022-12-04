@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ufc.qxd.desmob.apptreino.DAO.internal.ScriptDAO
@@ -64,12 +65,14 @@ class CadastroFragment : Fragment() {
         addTreino.setOnClickListener {
             try {
                 val nome = nomeScript.text.toString();
-                if(scriptDAO.addScript(nome,exercicios)){
+                scriptDAO.addScript(nome,exercicios,{
                     nomeScript.text.clear();
                     nomeExercicio.text.clear();
                     series.text.clear();
                     exercicios.clear();
                     exerciciosAdapter.notifyDataSetChanged();
+                }){
+                        code -> Toast.makeText(context, "Falha ao carregar Script", Toast.LENGTH_SHORT)
                 }
             }catch (e:Exception){
 

@@ -1,6 +1,6 @@
 package br.com.ufc.qxd.desmob.apptreino.treino
 
-class Historico(treino: Treino,Id:Int) {
+class Historico(treino: Treino,Id:String) {
     val treino = treino;
-    val Id: Int = Id;
+    val Id: String = "";
 }

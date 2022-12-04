@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,23 +19,26 @@ class IniciarTreinoActivity : AppCompatActivity() {
     private lateinit var exercicioLayout: LinearLayoutManager;
     private lateinit var scriptDAO: ScriptDAO;
     private lateinit var historicoDAO: HistoricoDAO;
-    private lateinit var exercicios: ArrayList<Treino>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_iniciar_treino)
         /*Carregando Views*/
         btnFinalizar = findViewById(R.id.iniciar_treino_btn_finalizar);
         exerciciosRecycle = findViewById(R.id.iniciar_treino_recycle);
-        /*Carregando dados*/
-        val id = intent.getIntExtra("scriptID",0);
-        scriptDAO = ScriptDAO();
-        exercicios = scriptDAO.getScript(id)?.exercicios ?: ArrayList<Treino>();
-        historicoDAO = HistoricoDAO();
         /*Iniciando Recycle*/
-        exerciciosAdapter = ExercicioAdapter(exercicios);
+        exerciciosAdapter = ExercicioAdapter(ArrayList<Treino>());
         exerciciosRecycle.adapter = exerciciosAdapter;
         exercicioLayout = LinearLayoutManager(this);
         exerciciosRecycle.layoutManager = exercicioLayout;
+        /*Carregando dados*/
+        val id = intent.getStringExtra("scriptID") ?: "" ;
+        scriptDAO = ScriptDAO();
+        scriptDAO.getScript(id,{
+                result -> exerciciosAdapter.exercicios = result.exercicios;exerciciosAdapter.notifyDataSetChanged();
+        }){
+                code -> Toast.makeText(applicationContext, "Falha ao carregar Script", Toast.LENGTH_SHORT)
+        }
+        historicoDAO = HistoricoDAO();
         /*Setando Botões*/
         btnFinalizar.setOnLongClickListener(){
             finalizar();

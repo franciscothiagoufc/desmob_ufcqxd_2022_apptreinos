@@ -1,6 +1,7 @@
 package br.com.ufc.qxd.desmob.apptreino.DAO.internal
 
 import br.com.ufc.qxd.desmob.apptreino.DAO.HistoricoDAOInterface
+import br.com.ufc.qxd.desmob.apptreino.DAO.codesDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
@@ -13,24 +14,26 @@ class HistoricoDAO : HistoricoDAOInterface {
         TODO("Not yet implemented")
     }
 
-    override fun addHistorico(treino: Treino) {
+    override fun addHistorico(treino: Treino,sucess: () -> Unit,error:(code:codesDAO) -> Unit) {
         counter++;
-        val historico = Historico(treino, counter);
+        val historico = Historico(treino, counter.toString());
         historicoArray.add(historico);
+        sucess();
     }
 
-    override fun getHistoricoArray():ArrayList<Historico> {
-        return historicoArray;
+    override fun getHistoricoArray(Id:String,sucess: (result:ArrayList<Historico>) -> Unit,error:(code:codesDAO) -> Unit) {
+        sucess(ArrayList<Historico>(historicoArray));
     }
 
-    override fun deleteHistorico(Id: Int):Boolean {
+    override fun deleteHistorico(Id:String,sucess:() -> Unit,error:(code:codesDAO) -> Unit) {
         for (i in historicoArray)
         {
             if (i.Id == Id){
                 historicoArray.remove(i);
-                return true;
+                sucess()
+                break
             }
         }
-        return false;
+        error(codesDAO.NOT_FOUND);
     }
 }

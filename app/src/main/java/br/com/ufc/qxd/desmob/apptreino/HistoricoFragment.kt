@@ -37,16 +37,21 @@ class HistoricoFragment() : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val View = inflater.inflate(R.layout.fragment_historico, container, false)
-        /*Recuperando dados*/
-        historicoDAO = HistoricoDAO();
         /*Iniciando Views*/
         linearManger = LinearLayoutManager(this.context);
-        historicoRecycleAdapter = TreinosHistoricoAdapter(historicoDAO);
+        historicoRecycleAdapter = TreinosHistoricoAdapter(ArrayList<Historico>());
         historicoRecycle = View.findViewById(R.id.treinos_historico_recycle);
         /*Configurando Recycle View*/
         historicoRecycle.adapter = historicoRecycleAdapter;
         historicoRecycle.layoutManager = linearManger;
         historicoRecycleAdapter.notifyDataSetChanged();
+        /*Recuperando dados*/
+        historicoDAO = HistoricoDAO();
+        historicoDAO.getHistoricoArray("",{
+            result->historicoRecycleAdapter.historicoArray = result;historicoRecycleAdapter.notifyDataSetChanged();
+        }){
+
+        }
         return View;
     }
 

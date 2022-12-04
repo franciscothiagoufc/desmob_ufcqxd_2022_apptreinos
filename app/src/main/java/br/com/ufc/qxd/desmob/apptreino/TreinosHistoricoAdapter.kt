@@ -12,10 +12,12 @@ import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-public class TreinosHistoricoAdapter(historicoDAO: HistoricoDAO): RecyclerView.Adapter<TreinosHistoricoAdapter.TreinoViewHolder>() {
-    private var historicoDAO:HistoricoDAO;
+public class TreinosHistoricoAdapter(historicoArray:ArrayList<Historico>): RecyclerView.Adapter<TreinosHistoricoAdapter.TreinoViewHolder>() {
+    private lateinit var historicoDAO:HistoricoDAO;
+    public lateinit var historicoArray:ArrayList<Historico>;
     init {
-        this.historicoDAO=historicoDAO;
+        this.historicoDAO=HistoricoDAO();
+        this.historicoArray=ArrayList<Historico>()
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,17 +28,19 @@ public class TreinosHistoricoAdapter(historicoDAO: HistoricoDAO): RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: TreinosHistoricoAdapter.TreinoViewHolder, position: Int) {
-        val historico = historicoDAO.getHistoricoArray().get(holder.adapterPosition);
+        val historico = historicoArray.get(holder.adapterPosition);
         holder.putInfos(historico.treino);
         holder.deleteButton.setOnClickListener {
-            if(historicoDAO.deleteHistorico(historico.Id)){
+            historicoDAO.deleteHistorico(historico.Id,{
+                historicoArray.removeAt(holder.adapterPosition)
                 notifyDataSetChanged();
+            }){
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return this.historicoDAO.getHistoricoArray().size;
+        return this.historicoArray.size;
     }
     class TreinoViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         public lateinit var deleteButton: ImageButton;

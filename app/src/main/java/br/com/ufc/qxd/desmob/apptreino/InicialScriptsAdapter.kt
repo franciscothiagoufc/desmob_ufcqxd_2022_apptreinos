@@ -19,8 +19,9 @@ import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 import br.com.ufc.qxd.desmob.apptreino.utils.Codes
 
 class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity):RecyclerView.Adapter<InicialScriptsAdapter.ScriptViewHolder>() {
-    private lateinit var Scripts: ArrayList<Script>;
+    public lateinit var Scripts: ArrayList<Script>;
     private lateinit var Activity: InicialActivity;
+    private lateinit var scriptDAO: ScriptDAO;
     private lateinit var startForResult: ActivityResultLauncher<Intent>;
     init {
         this.Scripts=Scripts;
@@ -38,9 +39,14 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
     override fun onBindViewHolder(holder: InicialScriptsAdapter.ScriptViewHolder, position: Int) {
         val script = Scripts.get(holder.adapterPosition);
         holder.putInfos(script);
+        scriptDAO=ScriptDAO();
         holder.deleteButton.setOnClickListener {
-            Scripts.removeAt(holder.adapterPosition);
-            notifyDataSetChanged();
+            scriptDAO.deleteScript(script.Id,{
+                Scripts.removeAt(holder.adapterPosition);
+                notifyDataSetChanged();
+            }){
+
+            }
         }
         holder.startButton.setOnClickListener {
             var intent = Intent(Activity,IniciarTreinoActivity::class.java);
