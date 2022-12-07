@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import com.google.android.material.tabs.TabLayout
@@ -38,9 +38,7 @@ class TreinosActivity : AppCompatActivity() {
         }
         tabLayoutMediator.attach();
     }
-
-    override fun onResume() {
-        super.onResume()
-        Log.w("TreinosActivity","TreinosActivity")
+    override fun onRestart() {
+        super.onRestart()
     }
 }

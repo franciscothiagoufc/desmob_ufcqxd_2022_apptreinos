@@ -17,7 +17,7 @@ import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-class CadastroFragment(userId:String) : Fragment() {
+class CadastroFragment() : Fragment() {
     private lateinit var addExercicio: ImageButton;
     private lateinit var addTreino: ImageButton;
     private lateinit var nomeScript: EditText;
@@ -28,9 +28,9 @@ class CadastroFragment(userId:String) : Fragment() {
     private lateinit var exerciciosLinearLayout: LinearLayoutManager;
     private lateinit var exercicios: ArrayList<Treino>;
     private lateinit var scriptDAO: ScriptDAO;
-    private lateinit var userId: String;
+    public lateinit var userId: String;
     init {
-        this.userId = userId;
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

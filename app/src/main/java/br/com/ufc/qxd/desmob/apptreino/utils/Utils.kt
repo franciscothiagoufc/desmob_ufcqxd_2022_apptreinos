@@ -1,7 +1,7 @@
 package br.com.ufc.qxd.desmob.apptreino.utils
 
 import android.util.Log
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
@@ -29,14 +29,14 @@ class Utils {
             scriptDAO.addScript(aut.getId(),"Treino4",treinoArray)
         }
         public fun dummyHistorico(historicoDAO: HistoricoDAO){
-            val treino1 = Treino("Treino1",1,1);
+            /*val treino1 = Treino("Treino1",1,1);
             val treino2 = Treino("Treino2",2,2);
             val treino3 = Treino("Treino3",3,3);
             val treino4 = Treino("Treino4",4,4);
             historicoDAO.addHistorico(treino1);
             historicoDAO.addHistorico(treino2);
             historicoDAO.addHistorico(treino3);
-            historicoDAO.addHistorico(treino4);
+            historicoDAO.addHistorico(treino4);*/
         }
     }
 }

@@ -1,7 +1,5 @@
 package br.com.ufc.qxd.desmob.apptreino
-
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +7,11 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
-import br.com.ufc.qxd.desmob.apptreino.treino.Treino
-import br.com.ufc.qxd.desmob.apptreino.utils.Codes
 
 class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity):RecyclerView.Adapter<InicialScriptsAdapter.ScriptViewHolder>() {
     public lateinit var Scripts: ArrayList<Script>;
@@ -28,7 +22,9 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
     init {
         this.Scripts=Scripts;
         this.Activity = Activity;
-        startForResult = Activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        this.authentication=Authentication(Activity)
+        startForResult = Activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result: ActivityResult ->
         }
     }
     override fun onCreateViewHolder(

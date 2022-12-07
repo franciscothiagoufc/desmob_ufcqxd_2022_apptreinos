@@ -8,16 +8,18 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-public class TreinosHistoricoAdapter(historicoArray:ArrayList<Historico>): RecyclerView.Adapter<TreinosHistoricoAdapter.TreinoViewHolder>() {
+public class TreinosHistoricoAdapter(historicoArray:ArrayList<Historico>,userId:String): RecyclerView.Adapter<TreinosHistoricoAdapter.TreinoViewHolder>() {
     private lateinit var historicoDAO:HistoricoDAO;
     public lateinit var historicoArray:ArrayList<Historico>;
+    private lateinit var userId: String;
     init {
         this.historicoDAO=HistoricoDAO();
         this.historicoArray=ArrayList<Historico>()
+        this.userId=userId;
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,7 +33,7 @@ public class TreinosHistoricoAdapter(historicoArray:ArrayList<Historico>): Recyc
         val historico = historicoArray.get(holder.adapterPosition);
         holder.putInfos(historico.treino);
         holder.deleteButton.setOnClickListener {
-            historicoDAO.deleteHistorico(historico.Id,{
+            historicoDAO.deleteHistorico(userId,historico.Id,{
                 historicoArray.removeAt(holder.adapterPosition)
                 notifyDataSetChanged();
             }){

@@ -9,7 +9,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 import java.lang.Exception

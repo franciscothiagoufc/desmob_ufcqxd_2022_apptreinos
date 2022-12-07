@@ -6,7 +6,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.utils.Utils

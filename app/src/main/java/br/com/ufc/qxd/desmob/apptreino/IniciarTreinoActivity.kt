@@ -2,13 +2,14 @@ package br.com.ufc.qxd.desmob.apptreino
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
@@ -37,7 +38,7 @@ class IniciarTreinoActivity : AppCompatActivity() {
         val id = intent.getStringExtra("scriptID") ?: " " ;
         scriptDAO = ScriptDAO();
         scriptDAO.getScript(authentication.getId(),id,{
-                result -> exerciciosAdapter.exercicios = result;exerciciosAdapter.notifyDataSetChanged();
+                result -> Log.w("onCreate","onCreate");exerciciosAdapter.exercicios = result;exerciciosAdapter.notifyDataSetChanged();
         }){
                 code -> Toast.makeText(applicationContext, "Falha ao carregar Script", Toast.LENGTH_SHORT)
         }
@@ -49,7 +50,7 @@ class IniciarTreinoActivity : AppCompatActivity() {
     }
     private fun finalizar(): Boolean {
         for(i in exerciciosAdapter.exercicios){
-            historicoDAO.addHistorico(i);
+            historicoDAO.addHistorico(authentication.getId(),i);
         }
         finish();
         return true

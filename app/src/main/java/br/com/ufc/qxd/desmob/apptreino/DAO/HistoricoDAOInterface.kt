@@ -7,7 +7,7 @@ import java.io.Serializable
 
 interface HistoricoDAOInterface {
     public fun init();
-    public fun addHistorico(treino: Treino,sucess: () -> Unit = {},error:(code:codesDAO) -> Unit = {});
-    public fun getHistoricoArray(Id:String,sucess: (result:ArrayList<Historico>) -> Unit = {},error:(code:codesDAO) -> Unit = {});
-    public fun deleteHistorico(Id:String,sucess:() -> Unit = {},error:(code: codesDAO) -> Unit = {});
+    public fun addHistorico(userId:String,treino: Treino,sucess: () -> Unit = {},error:(code:codesDAO) -> Unit = {});
+    public fun getHistoricoArray(userId: String,sucess: (result:ArrayList<Historico>) -> Unit = {},error:(code:codesDAO) -> Unit = {});
+    public fun deleteHistorico(userId: String,Id:String,sucess:() -> Unit = {},error:(code: codesDAO) -> Unit = {});
 }

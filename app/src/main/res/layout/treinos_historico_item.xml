@@ -37,12 +37,13 @@
                 android:layout_alignParentBottom="true"
                 android:text="Séries "
                 android:layout_marginLeft="4dp"/>
+
             <TextView
                 android:id="@+id/treinos_historico_item_series"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/treinos_historico_item_series_label"
                 android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/treinos_historico_item_series_label"
                 android:text="0" />
             <TextView
                 android:id="@+id/treinos_historico_item_repeticoes_label"
@@ -51,6 +52,7 @@
                 android:layout_toRightOf="@+id/treinos_historico_item_series"
                 android:layout_alignParentBottom="true"
                 android:text=" Repetições " />
+
             <TextView
                 android:id="@+id/treinos_historico_item_repeticoes"
                 android:layout_width="wrap_content"

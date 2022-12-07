@@ -5,7 +5,7 @@ import br.com.ufc.qxd.desmob.apptreino.DAO.codesDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
-class HistoricoDAO : HistoricoDAOInterface {
+/*class HistoricoDAO : HistoricoDAOInterface {
     companion object{
         private var counter:Int=0;
         private var historicoArray = ArrayList<Historico>();
@@ -36,4 +36,4 @@ class HistoricoDAO : HistoricoDAOInterface {
         }
         error(codesDAO.NOT_FOUND);
     }
-}
+}*/

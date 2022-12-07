@@ -8,7 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.ufc.qxd.desmob.apptreino.DAO.internal.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
+import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
@@ -27,7 +28,10 @@ class HistoricoFragment() : Fragment() {
     private lateinit var historicoRecycleAdapter: TreinosHistoricoAdapter;
     private lateinit var linearManger: LinearLayoutManager;
     public lateinit var historicoDAO: HistoricoDAO;
+    public var userId:String="";
     private lateinit var Treinos: ArrayList<Historico>;
+    init {
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -35,11 +39,14 @@ class HistoricoFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if(savedInstanceState != null)
+            userId=savedInstanceState.get("userId") as String
+        Log.w("TreinosActivity",userId)
         // Inflate the layout for this fragment
         val View = inflater.inflate(R.layout.fragment_historico, container, false)
         /*Iniciando Views*/
         linearManger = LinearLayoutManager(this.context);
-        historicoRecycleAdapter = TreinosHistoricoAdapter(ArrayList<Historico>());
+        historicoRecycleAdapter = TreinosHistoricoAdapter(ArrayList<Historico>(),userId);
         historicoRecycle = View.findViewById(R.id.treinos_historico_recycle);
         /*Configurando Recycle View*/
         historicoRecycle.adapter = historicoRecycleAdapter;
@@ -47,16 +54,18 @@ class HistoricoFragment() : Fragment() {
         historicoRecycleAdapter.notifyDataSetChanged();
         /*Recuperando dados*/
         historicoDAO = HistoricoDAO();
-        historicoDAO.getHistoricoArray("",{
+        historicoDAO.getHistoricoArray(userId,{
             result->historicoRecycleAdapter.historicoArray = result;historicoRecycleAdapter.notifyDataSetChanged();
         }){
 
         }
         return View;
     }
-
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("userId",userId)
+        super.onSaveInstanceState(outState)
+    }
     override fun onResume() {
         super.onResume()
-        Log.w("TreinosActivity","TreinosActivity")
     }
 }
