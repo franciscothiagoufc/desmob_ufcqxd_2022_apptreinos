@@ -41,7 +41,6 @@ class HistoricoFragment() : Fragment() {
     ): View? {
         if(savedInstanceState != null)
             userId=savedInstanceState.get("userId") as String
-        Log.w("TreinosActivity",userId)
         // Inflate the layout for this fragment
         val View = inflater.inflate(R.layout.fragment_historico, container, false)
         /*Iniciando Views*/
