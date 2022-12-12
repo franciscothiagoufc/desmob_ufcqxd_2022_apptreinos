@@ -1,4 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AppTreino</string>
+    <string-array name="exercicios">
+        <item>Flexão</item>
+        <item>Agachamento</item>
+        <item>Parada de mão</item>
+        <item>Barra direta</item>
+        <item>Supino</item>
+    </string-array>
+    <string name="hint_reps"><font size="24">Reps</font></string>
+    <string name="hint_peso"><font size="24">Peso</font></string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

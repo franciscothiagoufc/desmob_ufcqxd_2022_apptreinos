@@ -35,7 +35,9 @@ class TreinoTabAdapter(fragment: TreinosActivity,userId:String) : FragmentStateA
                 return historico;
             };
             2 -> {
-                EstatisticaFragment()
+                val estatistica = EstatisticaFragment()
+                estatistica.userId=userId;
+                return estatistica;
             };
             else -> CadastroFragment();
         }

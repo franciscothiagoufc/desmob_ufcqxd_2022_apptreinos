@@ -11,7 +11,8 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/exercicio_item"/>
         <Button
             android:id="@+id/iniciar_treino_btn_finalizar"
             android:layout_width="match_parent"

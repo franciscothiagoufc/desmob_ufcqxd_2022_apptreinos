@@ -8,7 +8,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/inicial_script_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/iniciar_script_item"/>
     <ImageButton
         android:id="@+id/inicial_script_editscript"
         android:layout_width="wrap_content"

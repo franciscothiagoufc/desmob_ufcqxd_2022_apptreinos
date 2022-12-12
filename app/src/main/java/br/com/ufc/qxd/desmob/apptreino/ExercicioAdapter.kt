@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.HistoricoDAO
 import br.com.ufc.qxd.desmob.apptreino.treino.Historico
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
-import java.lang.Exception
+import kotlin.Exception
 
 public class ExercicioAdapter(exercicios: ArrayList<Treino>): RecyclerView.Adapter<ExercicioAdapter.TreinoViewHolder>() {
     public var exercicios:ArrayList<Treino>;
@@ -29,9 +29,15 @@ public class ExercicioAdapter(exercicios: ArrayList<Treino>): RecyclerView.Adapt
     override fun onBindViewHolder(holder: ExercicioAdapter.TreinoViewHolder, position: Int) {
         val exercicio = exercicios.get(holder.adapterPosition);
         holder.putInfos(exercicio);
-        holder.treinoNome.doAfterTextChanged {
+        holder.pesoEdit.doAfterTextChanged {
             try {
                 exercicios.get(holder.adapterPosition).peso = holder.pesoEdit.text.toString().toDouble();
+            }catch (e:Exception){
+
+            }
+        }
+        holder.repsEdit.doAfterTextChanged {
+            try {
                 exercicios.get(holder.adapterPosition).reps = holder.repsEdit.text.toString().toInt();
             }catch (e:Exception){
 

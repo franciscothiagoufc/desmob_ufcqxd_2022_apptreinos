@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         treinosActivityIntent = Intent(this,InicialActivity::class.java);
         treinosActivity = InicialActivity();
         if(authentication.checkAuthentication()){
-            //startActivity(treinosActivityIntent);
+            startActivity(treinosActivityIntent);
         }
         /*Adicionando Interações*/
         loginEmailPass.setOnClickListener(){

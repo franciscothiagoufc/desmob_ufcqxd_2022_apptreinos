@@ -6,22 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.ufc.qxd.desmob.apptreino.DAO.firebase.ScriptDAO
 import br.com.ufc.qxd.desmob.apptreino.firebase.Authentication
 import br.com.ufc.qxd.desmob.apptreino.treino.Script
 import br.com.ufc.qxd.desmob.apptreino.treino.Treino
+import io.grpc.Context
 
 class CadastroFragment() : Fragment() {
     private lateinit var addExercicio: ImageButton;
     private lateinit var addTreino: ImageButton;
     private lateinit var nomeScript: EditText;
-    private lateinit var nomeExercicio: EditText;
+    private lateinit var nomeExercicio: AutoCompleteTextView;
+    private lateinit var autoCompleteAdapter: ArrayAdapter<String>;
     private lateinit var series: EditText;
     private lateinit var exerciciosRecyclerView: RecyclerView;
     private lateinit var exerciciosAdapter: TreinosCadastroAdapter;
@@ -36,6 +35,8 @@ class CadastroFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if(savedInstanceState?.containsKey("userId") == true)
+            userId = savedInstanceState?.getString("userId") ?: ""
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_cadastro, container, false)
         /*Instanciondo Views*/
@@ -43,6 +44,8 @@ class CadastroFragment() : Fragment() {
         addTreino = view.findViewById(R.id.treinos_cadastro_confirma);
         nomeScript = view.findViewById(R.id.treinos_cadastro_script);
         nomeExercicio = view.findViewById(R.id.treinos_cadastro_exercicio);
+        autoCompleteAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.exercicios))
+        nomeExercicio.setAdapter(autoCompleteAdapter)
         series = view.findViewById(R.id.treinos_cadastro_serie);
         exerciciosRecyclerView = view.findViewById(R.id.treinos_cadastro_exercicio_recycle);
         /*Iniciando DAO*/
@@ -54,7 +57,6 @@ class CadastroFragment() : Fragment() {
         exerciciosLinearLayout = LinearLayoutManager(this.context);
         exerciciosRecyclerView.adapter = exerciciosAdapter;
         exerciciosRecyclerView.layoutManager = exerciciosLinearLayout;
-        //exerciciosAdapter.notifyDataSetChanged();
         /*Funções dos Bostões*/
         addExercicio.setOnClickListener {
             try {
@@ -84,5 +86,9 @@ class CadastroFragment() : Fragment() {
             }
         }
         return view;
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("userId",userId)
+        super.onSaveInstanceState(outState)
     }
 }

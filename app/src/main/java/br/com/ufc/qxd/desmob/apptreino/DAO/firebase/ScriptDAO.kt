@@ -41,13 +41,14 @@ class ScriptDAO : ScriptsDAOInterface {
         error: (code: codesDAO) -> Unit
     ) {
         Firebase.firestore.collection("Scripts").whereEqualTo("userId", userId).get().addOnSuccessListener(){
-            documents -> run{
+            documents ->
+            run{
                 var result = ArrayList<Script>();
                 for(i in documents){
                     result.add(Script(i.id,i["nome"] as String))
                 }
                 sucess(result)
-        }
+            }
         }.addOnCanceledListener {
             error(codesDAO.CON_ERRO);
         }

@@ -40,14 +40,16 @@ class HistoricoDAO : HistoricoDAOInterface {
         sucess: (result: ArrayList<Historico>) -> Unit,
         error: (code: codesDAO) -> Unit
     ) {
-        Firebase.firestore.collection("Historico").whereEqualTo("userId", userId).get().addOnSuccessListener(){
-                documents -> run{
-            var result = ArrayList<Historico>();
-            for(i in documents){
-                result.add(Historico(Treino(i["nome"] as String,Integer.parseInt(i["series"].toString()) as Int,Integer.parseInt(i["reps"].toString())),i.id))
-            }
-            sucess(result)
-        }
+        Firebase.firestore.collection("Historico").whereEqualTo("userId", userId).get().addOnSuccessListener()
+        {
+                documents ->
+                run{
+                    var result = ArrayList<Historico>();
+                    for(i in documents){
+                        result.add(Historico(Treino(i["nome"] as String,i["series"].toString().toInt(),i["reps"].toString().toInt(),i["peso"].toString().toDouble()),i.id))
+                    }
+                    sucess(result)
+                }
         }.addOnCanceledListener {
             error(codesDAO.CON_ERRO);
         }

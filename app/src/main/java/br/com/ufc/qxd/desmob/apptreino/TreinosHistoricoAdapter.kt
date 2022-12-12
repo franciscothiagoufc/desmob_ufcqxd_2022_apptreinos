@@ -47,18 +47,21 @@ public class TreinosHistoricoAdapter(historicoArray:ArrayList<Historico>,userId:
     class TreinoViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         public lateinit var deleteButton: ImageButton;
         public lateinit var treinoNome: TextView;
+        public lateinit var pesoView: TextView;
         public lateinit var repeticoesView: TextView;
         public lateinit var seriesView: TextView;
         init {
             deleteButton = itemView.findViewById(R.id.treinos_historico_item_deleta);
             treinoNome = itemView.findViewById(R.id.treinos_historico_item_treino);
             repeticoesView = itemView.findViewById(R.id.treinos_historico_item_repeticoes);
+            pesoView = itemView.findViewById(R.id.treinos_historico_item_peso);
             seriesView = itemView.findViewById(R.id.treinos_historico_item_series);
         }
         public fun putInfos(treino: Treino){
             treinoNome.text = treino.nome;
             repeticoesView.text = treino.reps.toString();
             seriesView.text = treino.series.toString();
+            pesoView.text = treino.peso.toString();
         }
     }
 }

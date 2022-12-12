@@ -3,6 +3,8 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
@@ -20,9 +22,12 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
     private lateinit var scriptDAO: ScriptDAO;
     private lateinit var startForResult: ActivityResultLauncher<Intent>;
     init {
+        /*Sentando parametros*/
         this.Scripts=Scripts;
         this.Activity = Activity;
+        /*Obtendo autenticação do usuário*/
         this.authentication=Authentication(Activity)
+        /*Criando chamada para a activity iniciar treino*/
         startForResult = Activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 result: ActivityResult ->
         }
@@ -35,8 +40,10 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
         return InicialScriptsAdapter.ScriptViewHolder(itemView);
     }
     override fun onBindViewHolder(holder: InicialScriptsAdapter.ScriptViewHolder, position: Int) {
+        /*Iniciando ViewHolders*/
         val script = Scripts.get(holder.adapterPosition);
         holder.putInfos(script);
+        /*Implementando função de deletar script*/
         scriptDAO=ScriptDAO();
         holder.deleteButton.setOnClickListener {
             scriptDAO.deleteScript( authentication.getId(),script.Id,{
@@ -46,10 +53,16 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
 
             }
         }
+        /*Implementando função de iniciar script*/
         holder.startButton.setOnClickListener {
             var intent = Intent(Activity,IniciarTreinoActivity::class.java);
             intent.putExtra("scriptID",Scripts.get(holder.adapterPosition).Id)
             startForResult.launch(intent);
+        }
+        /*Animações ocorre caso haja uma alteração na posição*/
+        if(holder.adapterPosition >  holder.lastposition){
+            holder.itemView.startAnimation(AnimationUtils.loadAnimation(this.Activity.baseContext,android.R.anim.fade_in))
+            holder.lastposition=holder.adapterPosition
         }
     }
     override fun getItemCount(): Int {
@@ -59,7 +72,9 @@ class InicialScriptsAdapter(Scripts:ArrayList<Script>,Activity: InicialActivity)
         public lateinit var startButton: ImageButton;
         public lateinit var deleteButton: ImageButton;
         public lateinit var nome: TextView;
+        public var lastposition = -1
         init {
+            /*View do item script*/
             deleteButton = itemView.findViewById(R.id.iniciar_script_item_remover);
             startButton = itemView.findViewById(R.id.iniciar_script_item_iniciar);
             nome = itemView.findViewById(R.id.iniciar_script_item_nome);

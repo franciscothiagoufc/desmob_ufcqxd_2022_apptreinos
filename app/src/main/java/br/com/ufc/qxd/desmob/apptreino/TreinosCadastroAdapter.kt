@@ -1,5 +1,6 @@
 package br.com.ufc.qxd.desmob.apptreino
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import br.com.ufc.qxd.desmob.apptreino.treino.Treino
 
 public class TreinosCadastroAdapter(exercicios: ArrayList<Treino>): RecyclerView.Adapter<TreinosCadastroAdapter.TreinoViewHolder>() {
     private var exercicios:ArrayList<Treino>;
+    private lateinit var contex:Context
     init {
         this.exercicios=exercicios;
     }
@@ -22,6 +24,7 @@ public class TreinosCadastroAdapter(exercicios: ArrayList<Treino>): RecyclerView
         viewType: Int
     ): TreinosCadastroAdapter.TreinoViewHolder {
         var itemView = LayoutInflater.from(parent.context).inflate(R.layout.treinos_cadastro_item,parent,false);
+        contex=parent.context
         return TreinoViewHolder(itemView);
     }
 
@@ -32,6 +35,11 @@ public class TreinosCadastroAdapter(exercicios: ArrayList<Treino>): RecyclerView
             exercicios.removeAt(holder.adapterPosition);
             notifyDataSetChanged();
         }
+        /*Animações ocorre caso haja uma alteração na posição*/
+        if(holder.adapterPosition >  holder.lastposition){
+            holder.itemView.startAnimation(android.view.animation.AnimationUtils.loadAnimation(contex,android.R.anim.slide_in_left))
+            holder.lastposition=holder.adapterPosition
+        }
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +49,7 @@ public class TreinosCadastroAdapter(exercicios: ArrayList<Treino>): RecyclerView
         public lateinit var deleteButton: ImageButton;
         public lateinit var treinoNome: TextView;
         public lateinit var seriesView: TextView;
+        public var lastposition=-1
         init {
             deleteButton = itemView.findViewById(R.id.treinos_cadastro_item_deleta);
             treinoNome = itemView.findViewById(R.id.treinos_cadastro_item_treino);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/exercicio_item_nome"
@@ -13,32 +13,58 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Séries"
+        app:layout_constraintBottom_toTopOf="@+id/exercicio_item_serie"
+        app:layout_constraintLeft_toLeftOf="@+id/exercicio_item_serie"
+        android:textSize="12dp"/>
+    <TextView
         android:id="@+id/exercicio_item_serie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Séries"
-        app:layout_constraintRight_toLeftOf="@+id/exercicio_item_reps"
+        app:layout_constraintRight_toLeftOf="@+id/exercicio_item_reps_layout"
+        app:layout_constraintLeft_toRightOf="@+id/exercicio_item_nome"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginRight="12dp"/>
-    <EditText
-        android:id="@+id/exercicio_item_reps"
-        android:layout_width="64dp"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/exercicio_item_reps_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Reps"
-        android:inputType="number"
-        app:layout_constraintRight_toLeftOf="@+id/exercicio_item_peso"
+        app:layout_constraintRight_toLeftOf="@+id/exercicio_item_peso_layout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="12dp"/>
-    <EditText
-        android:id="@+id/exercicio_item_peso"
-        android:layout_width="64dp"
+        android:layout_marginRight="12dp">
+        <EditText
+            android:id="@+id/exercicio_item_reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_reps"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/exercicio_item_peso_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Peso"
-        android:inputType="number"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="12dp"/>
+        android:layout_marginRight="12dp">
+        <EditText
+            android:id="@+id/exercicio_item_peso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_peso"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
